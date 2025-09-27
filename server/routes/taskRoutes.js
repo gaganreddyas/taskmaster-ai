@@ -5,7 +5,7 @@ const { GoogleGenerativeAI } = require("@google/generative-ai");
 
 // Initialize Google AI - This assumes your .env file is loaded correctly in index.js
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash-latest"});
+const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash"});
 
 // ROUTE 1: GET all tasks
 // @desc    Fetches all tasks from the database
