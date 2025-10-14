@@ -29,27 +29,27 @@ router.post('/', async (req, res) => {
       return res.status(400).json({ message: "Title is required" });
     }
 
-    // --- AI INTEGRATION ---
-    const prompt = `Based on the following task, classify its priority as "High", "Medium", or "Low". Consider words like "urgent", "asap", "important", "now" for High priority. Respond with only one word. Task: "${title}"`;
-    
-    const result = await model.generateContent(prompt);
-    const response = await result.response;
-    let priority = response.text().trim();
-
-    // Fallback in case the AI response is not one of the expected values
-    if (!['High', 'Medium', 'Low'].includes(priority)) {
-      priority = 'Medium';
+    let priority = 'Medium'; // Default fallback
+    try {
+      // --- AI INTEGRATION ---
+      const prompt = `Based on the following task, classify its priority as \"High\", \"Medium\", or \"Low\". Consider words like \"urgent\", \"asap\", \"important\", \"now\" for High priority. Respond with only one word. Task: \"${title}\"`;
+      const result = await model.generateContent(prompt);
+      const response = await result.response;
+      let aiPriority = response.text().trim();
+      if (["High", "Medium", "Low"].includes(aiPriority)) {
+        priority = aiPriority;
+      }
+      // If not valid, keep fallback
+    } catch (aiErr) {
+      console.error("Gemini AI error, using fallback priority:", aiErr);
     }
-    // --------------------
 
     const newTask = new Task({
       title,
-      priority, // Use the priority from the AI
+      priority,
     });
-    
     const savedTask = await newTask.save();
     res.status(201).json(savedTask);
-
   } catch (err) {
     console.error("Error in POST route:", err);
     res.status(500).json({ message: 'Server Error' });
