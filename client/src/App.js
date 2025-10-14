@@ -41,7 +41,7 @@ function App() {
 
   const deleteTask = async (id) => {
     try {
-      await axios.delete(`/api/tasks/${id}`);
+      await axios.delete(`https://taskmaster-ai-8zdi.onrender.com/api/tasks/${id}`);
       setTasks(tasks.filter(task => task._id !== id));
     } catch (error) {
       console.error("Error deleting task:", error);
@@ -51,7 +51,7 @@ function App() {
 
   const toggleComplete = async (id) => {
     try {
-      const response = await axios.put(`/api/tasks/${id}`);
+      const response = await axios.put(`https://taskmaster-ai-8zdi.onrender.com/api/tasks/${id}`);
       setTasks(tasks.map(task => task._id === id ? response.data : task));
     } catch (error) {
       console.error("Error updating task:", error);
