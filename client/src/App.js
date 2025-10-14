@@ -12,7 +12,7 @@ function App() {
       try {
         setError(null);
         setLoading(true);
-        const response = await axios.get('/api/tasks');
+  const response = await axios.get('https://taskmaster-ai-8zdi.onrender.com/api/tasks');
         setTasks(response.data);
       } catch (error) {
         console.error("Error fetching tasks:", error);
@@ -30,7 +30,7 @@ function App() {
     if (!newTaskTitle.trim()) return;
 
     try {
-      const response = await axios.post('/api/tasks', { title: newTaskTitle });
+  const response = await axios.post('https://taskmaster-ai-8zdi.onrender.com/api/tasks', { title: newTaskTitle });
       setTasks([...tasks, response.data]);
       setNewTaskTitle('');
     } catch (error) {
