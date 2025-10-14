@@ -1,0 +1,181 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #1a1a1a;
+  color: white;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: bold;
+  background: linear-gradient(45deg, #9333ea, #ec4899);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0;
+}
+
+.form-container {
+  background-color: #2d2d2d;
+  padding: 24px;
+  border-radius: 8px;
+  margin-bottom: 32px;
+}
+
+.form {
+  display: flex;
+  gap: 16px;
+}
+
+.input {
+  flex: 1;
+  background-color: #3d3d3d;
+  color: white;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 6px;
+  outline: none;
+}
+
+.input:focus {
+  box-shadow: 0 0 0 2px #9333ea;
+}
+
+.button {
+  background-color: #9333ea;
+  color: white;
+  font-weight: bold;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.button:hover {
+  background-color: #7c3aed;
+}
+
+.section {
+  margin-bottom: 32px;
+}
+
+.section-title {
+  font-size: 1.875rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  border-bottom: 2px solid #3d3d3d;
+  padding-bottom: 8px;
+}
+
+.task-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.task-item {
+  background-color: #2d2d2d;
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.task-item.completed {
+  opacity: 0.6;
+}
+
+.task-content {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox {
+  margin-right: 16px;
+  width: 20px;
+  height: 20px;
+}
+
+.task-title {
+  font-size: 1.125rem;
+}
+
+.task-title.completed {
+  text-decoration: line-through;
+}
+
+.task-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.priority-badge {
+  padding: 4px 12px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: 16px;
+  color: white;
+}
+
+.priority-high {
+  background-color: #ef4444;
+}
+
+.priority-medium {
+  background-color: #eab308;
+}
+
+.priority-low {
+  background-color: #22c55e;
+}
+
+.delete-button {
+  color: #9ca3af;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.delete-button:hover {
+  color: #ef4444;
+}
+
+.empty-message {
+  color: #6b7280;
+  text-align: center;
+  font-style: italic;
+}
+
+.error-message {
+  background-color: #ef4444;
+  color: white;
+  padding: 16px;
+  border-radius: 6px;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.loading-message {
+  text-align: center;
+  color: #9ca3af;
+}
