@@ -1,0 +1,16 @@
+{
+  "name": "taskmaster-ai",
+  "private": true,
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "start": "concurrently \"npm:start:server\" \"npm:start:client\"",
+    "start:client": "npm start --workspace=client",
+    "start:server": "npm start --workspace=server"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
