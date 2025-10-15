@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 function App() {
+  const [addingTask, setAddingTask] = useState(false);
   const [tasks, setTasks] = useState([]);
   const [newTaskTitle, setNewTaskTitle] = useState('');
   const [loading, setLoading] = useState(true);
@@ -27,15 +28,17 @@ function App() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!newTaskTitle.trim()) return;
-
+    if (!newTaskTitle.trim() || addingTask) return;
+    setAddingTask(true);
     try {
-  const response = await axios.post('https://taskmaster-ai-8zdi.onrender.com/api/tasks', { title: newTaskTitle });
+      const response = await axios.post('https://taskmaster-ai-8zdi.onrender.com/api/tasks', { title: newTaskTitle });
       setTasks([...tasks, response.data]);
       setNewTaskTitle('');
     } catch (error) {
       console.error("Error creating task:", error);
       setError("Failed to add task. Please try again.");
+    } finally {
+      setAddingTask(false);
     }
   };
 
@@ -76,11 +79,15 @@ function App() {
             onChange={(e) => setNewTaskTitle(e.target.value)}
             placeholder="Add a new task and let AI set the priority..."
             className="input"
+            disabled={addingTask}
           />
-          <button type="submit" className="button">
-            Add Task
+          <button type="submit" className="button" disabled={addingTask}>
+            {addingTask ? 'Processing...' : 'Add Task'}
           </button>
         </form>
+        {addingTask && (
+          <div className="loading-message">Processing your task...</div>
+        )}
       </div>
 
       {error && <div className="error-message">{error}</div>}
