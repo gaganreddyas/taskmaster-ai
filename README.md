@@ -19,7 +19,7 @@ A modern, full-stack task management app powered by React, Node.js, Express, Mon
 ---
 
 ## Screenshot
-![TaskMaster AI Screenshot](images/screenshot.png)
+![TaskMaster AI Screenshot](images/screenshot.jpg)
 
 ---
 
